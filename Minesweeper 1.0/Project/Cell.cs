@@ -8,6 +8,9 @@ namespace Minesweeper_1._0.Project
 {
     public class Cell
     {
+        //ojnn
+
+
         public bool IsMine { get; set; }
         public bool IsRevealed { get; set; }
         public bool IsFlagged { get; set; }
