@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Minesweeper_1._0.Project
+namespace Minesweeper_1._0
 {
-    internal class Record
+    internal class server
     {
     }
 }

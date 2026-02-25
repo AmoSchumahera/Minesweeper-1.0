@@ -1,0 +1,9 @@
+CREATE TABLE Records
+(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    PlayerName NVARCHAR(50) NOT NULL,
+    MineCount INT NOT NULL,
+    TimeSeconds INT NOT NULL,
+    DatePlayed DATETIME NOT NULL,
+    IsWin BIT NOT NULL
+)

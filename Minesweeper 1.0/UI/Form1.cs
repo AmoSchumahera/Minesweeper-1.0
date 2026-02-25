@@ -1,4 +1,7 @@
-﻿using Minesweeper_1._0.Project;
+﻿using Minesweeper_1._0.Data;
+using Minesweeper_1._0.Models;
+using Minesweeper_1._0.Project;
+using Minesweeper_1._0.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +18,10 @@ namespace Minesweeper_1._0
 {
     public partial class Form1 : Form
     {
+        private DatabaseManager db = new DatabaseManager();
+        private bool gameEnded = false;
+
+
         private GameEngine game;
         private Button[,] buttons;
         private int cellSize = 30;
@@ -34,7 +41,7 @@ namespace Minesweeper_1._0
 
             StartGame();
         }
-
+        private RecordService recordService = new RecordService();
         private void StartGame()
         {
             gameOver = false;
@@ -176,6 +183,10 @@ namespace Minesweeper_1._0
                 SoundPlayer windSound = new SoundPlayer(@"..\..\win.wav");
                 windSound.Play();
                 MessageBox.Show("!WINNER WINNER CHICKEN DINNER!");
+                recordService.SaveGame(txtPlayerName.Text,
+                       (int)numMines.Value,
+                       timeElapsed,
+                       win);
             }
             else
 
@@ -183,7 +194,18 @@ namespace Minesweeper_1._0
                 SoundPlayer loseSound = new SoundPlayer(@"..\..\lose.wav");
                 loseSound.Play();
                 MessageBox.Show("!CHICKEN DINNER ONLY FOR THE WINNER!");
+                recordService.SaveGame(txtPlayerName.Text,
+              (int)numMines.Value,
+              timeElapsed,
+              false);
             }
+            LoadLeaderboard();
+
+        }
+        private void LoadLeaderboard()
+        {
+            string filter = cmbFilter.SelectedItem?.ToString() ?? "All Time";
+            dgvLeaderboard.DataSource = recordService.GetLeaderboard(filter);
         }
         //3.
         private void numMines_Value(object sender, EventArgs e)
@@ -239,6 +261,11 @@ namespace Minesweeper_1._0
         private void panelBoard_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadLeaderboard();
         }
     }
 }

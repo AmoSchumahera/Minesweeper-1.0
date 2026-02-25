@@ -35,7 +35,10 @@
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.lblTimer = new System.Windows.Forms.Label();
             this.panelBoard = new System.Windows.Forms.Panel();
+            this.cmbFilter = new System.Windows.Forms.ComboBox();
+            this.dgvLeaderboard = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numMines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLeaderboard)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPlayerName
@@ -89,7 +92,7 @@
             // lblTimer
             // 
             this.lblTimer.AutoSize = true;
-            this.lblTimer.Location = new System.Drawing.Point(474, 124);
+            this.lblTimer.Location = new System.Drawing.Point(752, 143);
             this.lblTimer.MaximumSize = new System.Drawing.Size(90, 90);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(14, 16);
@@ -99,17 +102,44 @@
             // 
             // panelBoard
             // 
-            this.panelBoard.Location = new System.Drawing.Point(548, 84);
+            this.panelBoard.Location = new System.Drawing.Point(805, 113);
             this.panelBoard.Name = "panelBoard";
             this.panelBoard.Size = new System.Drawing.Size(450, 450);
             this.panelBoard.TabIndex = 10;
             this.panelBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBoard_Paint);
             // 
+            // cmbFilter
+            // 
+            this.cmbFilter.FormattingEnabled = true;
+            this.cmbFilter.Items.AddRange(new object[] {
+            "All Time",
+            "This Week",
+            "This Month",
+            "This Year"});
+            this.cmbFilter.Location = new System.Drawing.Point(12, 22);
+            this.cmbFilter.Name = "cmbFilter";
+            this.cmbFilter.Size = new System.Drawing.Size(677, 24);
+            this.cmbFilter.TabIndex = 11;
+            this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // dgvLeaderboard
+            // 
+            this.dgvLeaderboard.AllowUserToResizeRows = false;
+            this.dgvLeaderboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLeaderboard.Location = new System.Drawing.Point(12, 62);
+            this.dgvLeaderboard.Name = "dgvLeaderboard";
+            this.dgvLeaderboard.RowHeadersWidth = 51;
+            this.dgvLeaderboard.RowTemplate.Height = 24;
+            this.dgvLeaderboard.Size = new System.Drawing.Size(677, 222);
+            this.dgvLeaderboard.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 684);
+            this.ClientSize = new System.Drawing.Size(1376, 684);
+            this.Controls.Add(this.dgvLeaderboard);
+            this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.panelBoard);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.button1);
@@ -119,6 +149,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numMines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLeaderboard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +162,8 @@
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Panel panelBoard;
+        private System.Windows.Forms.ComboBox cmbFilter;
+        private System.Windows.Forms.DataGridView dgvLeaderboard;
     }
 }
 

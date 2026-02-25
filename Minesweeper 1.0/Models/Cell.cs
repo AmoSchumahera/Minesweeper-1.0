@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Minesweeper_1._0.Project
+namespace Minesweeper_1._0.Models
 {
     public class Cell
     {
